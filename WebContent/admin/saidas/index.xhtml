@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Listagem de Franquias</title>
+</h:head>
+
+<f:view>
+	<h:body>
+		<h:form>
+			<a4j:region>
+				<rich:panel header="Listagem de Franquias" id="painel">
+						<h:link value="Adicionar" outcome="add" />
+						<br />
+						<rich:dataTable id="tabela" var="lista" value="#{entradas.lista}">
+						<rich:column>
+							<f:facet name="header">CÓDIGO</f:facet>
+							<h:outputText value="#{lista.id}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">DESCRIÇÃO</f:facet>
+							<h:outputText value="#{lista.descricao}" />
+						</rich:column>
+							<rich:column>
+							<f:facet name="header">VALOR TOTAL</f:facet>
+							<h:outputText value="#{lista.valorTotal}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">FRANQUIA</f:facet>
+							<h:outputText value="#{lista.franquiasId.nome}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">FORMA DE PAGAMENTO</f:facet>
+							<h:outputText value="#{lista.formaPagamentosId.descricao}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">CONTAS</f:facet>
+							<h:outputText value="#{lista.contasId.nome}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Alterar</f:facet>
+							 <h:commandLink value="Alterar"  action="#{entradas.view}">
+							 <f:setPropertyActionListener value="#{lista}" target="#{entradas.entradas}" />
+							</h:commandLink>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Deletar</f:facet>
+							<h:commandLink action="#{entradas.delete}" onclick="if(!confirm('Deseja Realamente Excluir?')) return false;">
+							<h:outputText value="Excluir" />
+							<f:setPropertyActionListener value="#{lista.id}" target="#{entradas.entradas.id}" />
+							</h:commandLink>
+						</rich:column>
+					</rich:dataTable>
+				</rich:panel>
+			</a4j:region>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

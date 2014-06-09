@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Cadastro de Franquias</title>
+</h:head>
+<f:view>
+	<h:body>
+		<h:form>
+			<a4j:region>
+				<rich:panel header="Cadastro de Franquias" id="painel">
+					<br />
+					<table id="tab">
+						<tr>
+							<td>Nome:</td>
+							<td>
+								<h:inputHidden value="#{franquias.franquias.id}" />
+								<h:inputText value="#{franquias.franquias.nome}" />
+							</td>
+						</tr>
+						<tr>
+							<td class="texto">Clientes:</td>
+						<td>
+							<h:selectOneMenu value="#{franquias.franquias.clientesId}"
+							 converter="simpleIndexConverter" >
+								<f:selectItems value="#{franquias.clientes}"/>
+							</h:selectOneMenu>
+						</td>
+						</tr>
+						<tr>
+							<td>Endereço:</td>
+							<td><h:inputText value="#{franquias.franquias.endereco}" /></td>
+						</tr>	
+						<tr>
+							<td>Numero:</td>
+							<td><h:inputText value="#{franquias.franquias.numero}" /></td>
+						</tr>
+						<tr>
+							<td>Bairro:</td>
+							<td><h:inputText value="#{franquias.franquias.bairro}" /></td>
+						</tr>
+						<tr>
+							<td>Cidade:</td>
+							<td><h:inputText value="#{franquias.franquias.cidade}" /></td>
+						</tr>
+						<tr>
+							<td>UF:</td>
+							<td><h:inputText value="#{franquias.franquias.uf}" /></td>
+						</tr>
+						<tr>
+							<td>Contato:</td>
+							<td><h:inputText value="#{franquias.franquias.contato}" /></td>
+						</tr>
+						<tr>
+							<td>Telefone:</td>
+							<td><h:inputText value="#{franquias.franquias.telefone}" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h:commandButton value="Alterar" action="#{franquias.edit}" />
+							</td>
+						</tr>
+					</table>
+				</rich:panel>
+			</a4j:region>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

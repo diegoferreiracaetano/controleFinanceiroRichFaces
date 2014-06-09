@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Cadastro de Contas</title>
+</h:head>
+<f:view>
+	<h:body>
+		<h:form>
+			<a4j:region>
+				<rich:panel header="Cadastro de Contas" id="painel">
+					<br />
+					<table id="tab">
+						<tr>
+							<td>Nome:</td>
+							<td><h:inputText value="#{contas.contas.nome}" /></td>
+						</tr>
+						<tr>
+							<td>Agencia:</td>
+							<td><h:inputText value="#{contas.contas.agencia}" /></td>
+						</tr>
+						<tr>
+							<td>Conta:</td>
+							<td><h:inputText value="#{contas.contas.conta}" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h:commandButton value="Cadastrar" action="#{contas.add}" render="resultado" />
+							</td>
+						</tr>
+					</table>
+				</rich:panel>
+			</a4j:region>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Cadastro de Despesas</title>
+</h:head>
+<f:view>
+	<h:body>
+		<h:form>
+			<a4j:region>
+				<rich:panel header="Cadastro de Despesas" id="painel">
+					<br />
+					<table id="tab">
+						<tr>
+							<td>Despesas:</td>
+							<td>
+								<h:inputHidden value="#{despesas.despesas.id}" />
+								<h:inputText value="#{despesas.despesas.descricao}" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h:commandButton value="Alterar" action="#{despesas.edit}" />
+							</td>
+						</tr>
+					</table>
+				</rich:panel>
+			</a4j:region>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

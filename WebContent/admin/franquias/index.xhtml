@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Listagem de Franquias</title>
+</h:head>
+
+<f:view>
+	<h:body>
+		<h:form>
+			<a4j:region>
+				<rich:panel header="Listagem de Franquias" id="painel">
+						<h:link value="Adicionar" outcome="add" />
+						<br />
+						<rich:dataTable id="tabela" var="lista" value="#{franquias.lista}">
+						<rich:column>
+							<f:facet name="header">CÓDIGO</f:facet>
+							<h:outputText value="#{lista.id}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">CLIENTE</f:facet>
+							<h:outputText value="#{lista.clientesId.nome}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">NOME</f:facet>
+							<h:outputText value="#{lista.nome}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">ENDEREÇO</f:facet>
+							<h:outputText value="#{lista.endereco}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">NUMERO</f:facet>
+							<h:outputText value="#{lista.numero}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">BAIRRO</f:facet>
+							<h:outputText value="#{lista.bairro}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">CIDADE</f:facet>
+							<h:outputText value="#{lista.cidade}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">CONTATO</f:facet>
+							<h:outputText value="#{lista.contato}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">TELEFONE</f:facet>
+							<h:outputText value="#{lista.telefone}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Alterar</f:facet>
+							 <h:commandLink value="Alterar"  action="#{franquias.view}">
+							 <f:setPropertyActionListener value="#{lista}" target="#{franquias.franquias}" />
+							</h:commandLink>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Deletar</f:facet>
+							<h:commandLink action="#{franquias.delete}" onclick="if(!confirm('Deseja Realamente Excluir?')) return false;">
+							<h:outputText value="Excluir" />
+							<f:setPropertyActionListener value="#{lista.id}" target="#{franquias.franquias.id}" />
+							</h:commandLink>
+						</rich:column>
+					</rich:dataTable>
+				</rich:panel>
+			</a4j:region>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

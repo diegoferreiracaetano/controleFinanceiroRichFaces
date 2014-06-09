@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Listagem de Clientes</title>
+</h:head>
+
+<f:view>
+	<h:body>
+		<h:form>
+			<a4j:region>
+				<rich:panel header="Listagem de Clientes" id="painel">
+						<h:link value="Adicionar" outcome="add" />
+						<br />
+						<rich:dataTable id="tabela" var="lista" value="#{clientes.lista}">
+						<rich:column>
+							<f:facet name="header">CÓDIGO</f:facet>
+							<h:outputText value="#{lista.id}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">NOME</f:facet>
+							<h:outputText value="#{lista.nome}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Alterar</f:facet>
+							 <h:commandLink value="Alterar"  action="#{clientes.view}">
+							 <f:setPropertyActionListener value="#{lista}" target="#{clientes.clientes}" />
+							</h:commandLink>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Deletar</f:facet>
+							<h:commandLink action="#{clientes.delete}" onclick="if(!confirm('Deseja Realamente Excluir?')) return false;">
+							<h:outputText value="Excluir" />
+							<f:setPropertyActionListener value="#{lista.id}" target="#{clientes.clientes.id}" />
+							</h:commandLink>
+						</rich:column>
+					</rich:dataTable>
+				</rich:panel>
+			</a4j:region>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Cadastro de Alunos</title>
+</h:head>
+
+<f:view>
+	<h:body>
+		<h:form>
+			<a4j:region>
+				<rich:panel header="Listagem de Cendentes" id="painel">
+						<rich:dataTable id="tabela" var="lista" value="#{cedentes.lista}">
+						<rich:column>
+							<f:facet name="header">RM</f:facet>
+							<h:outputText value="#{lista.id}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">NOME</f:facet>
+							<h:outputText value="#{lista.nome}" />
+						</rich:column>
+					</rich:dataTable>
+				</rich:panel>
+			</a4j:region>
+		</h:form>
+	</h:body>
+</f:view>
+</html>
