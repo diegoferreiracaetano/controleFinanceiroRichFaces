@@ -7,17 +7,17 @@
 	xmlns:a4j="http://richfaces.org/a4j">
 
 <h:head>
-	<title>Listagem de Franquias</title>
+	<title>Listagem de Saidas</title>
 </h:head>
 
 <f:view>
 	<h:body>
 		<h:form>
 			<a4j:region>
-				<rich:panel header="Listagem de Franquias" id="painel">
+				<rich:panel header="Listagem de Saidas" id="painel">
 						<h:link value="Adicionar" outcome="add" />
 						<br />
-						<rich:dataTable id="tabela" var="lista" value="#{entradas.lista}">
+						<rich:dataTable id="tabela" var="lista" value="#{saidas.lista}">
 						<rich:column>
 							<f:facet name="header">CÓDIGO</f:facet>
 							<h:outputText value="#{lista.id}" />
@@ -31,28 +31,28 @@
 							<h:outputText value="#{lista.valorTotal}" />
 						</rich:column>
 						<rich:column>
-							<f:facet name="header">FRANQUIA</f:facet>
-							<h:outputText value="#{lista.franquiasId.nome}" />
+							<f:facet name="header">CEDENTES</f:facet>
+							<h:outputText value="#{lista.cedentesId.nome}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">DESPESAS</f:facet>
+							<h:outputText value="#{lista.despesasId.descricao}" />
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">FORMA DE PAGAMENTO</f:facet>
 							<h:outputText value="#{lista.formaPagamentosId.descricao}" />
 						</rich:column>
 						<rich:column>
-							<f:facet name="header">CONTAS</f:facet>
-							<h:outputText value="#{lista.contasId.nome}" />
-						</rich:column>
-						<rich:column>
 							<f:facet name="header">Alterar</f:facet>
-							 <h:commandLink value="Alterar"  action="#{entradas.view}">
-							 <f:setPropertyActionListener value="#{lista}" target="#{entradas.entradas}" />
+							 <h:commandLink value="Alterar"  action="#{saidas.view}">
+							 <f:setPropertyActionListener value="#{lista}" target="#{saidas.saidas}" />
 							</h:commandLink>
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">Deletar</f:facet>
-							<h:commandLink action="#{entradas.delete}" onclick="if(!confirm('Deseja Realamente Excluir?')) return false;">
+							<h:commandLink action="#{saidas.delete}" onclick="if(!confirm('Deseja Realamente Excluir?')) return false;">
 							<h:outputText value="Excluir" />
-							<f:setPropertyActionListener value="#{lista.id}" target="#{entradas.entradas.id}" />
+							<f:setPropertyActionListener value="#{lista.id}" target="#{saidas.saidas.id}" />
 							</h:commandLink>
 						</rich:column>
 					</rich:dataTable>

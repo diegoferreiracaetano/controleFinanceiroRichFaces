@@ -7,53 +7,57 @@
 	xmlns:a4j="http://richfaces.org/a4j">
 
 <h:head>
-	<title>Cadastro de Entradas</title>
+	<title>Cadastro de Saidas</title>
 </h:head>
 <f:view>
 	<h:body>
 		<h:form>
 			<a4j:region>
-				<rich:panel header="Cadastro de Entradas" id="painel">
+				<rich:panel header="Cadastro de Saidas" id="painel">
 					<br />
 					<table id="tab">
 						<tr>
 							<td>Descrição:</td>
-							<td><h:inputText value="#{entradas.entradas.descricao}" /></td>
+							<td><h:inputText value="#{saidas.saidas.descricao}" /></td>
 						</tr>
 						<tr>
 							<td>Valor Total:</td>
-							<td><rich:inputNumberSpinner value="#{entradas.entradas.valorTotal}" /></td>
+							<td><rich:inputNumberSpinner value="#{saidas.saidas.valorTotal}" /></td>
 						</tr>
 						<tr>
-							<td>Franquia:</td>
+							<td>Recido:</td>
+							<td><h:inputText value="#{saidas.saidas.recibo}" /></td>
+						</tr>
+						<tr>
+							<td>Despesas:</td>
 							<td>
-								<h:selectOneMenu value="#{entradas.entradas.franquiasId}"
+								<h:selectOneMenu value="#{saidas.saidas.despesasId}"
 								 converter="simpleIndexConverter">
-									<f:selectItems value="#{entradas.franquias}"/>
+									<f:selectItems value="#{saidas.despesas}"/>
 								</h:selectOneMenu>
 							</td>
 						</tr>
 						<tr>
 							<td>Formas de Pagamento:</td>
 							<td>
-								<h:selectOneMenu value="#{entradas.entradas.formaPagamentosId}"
+								<h:selectOneMenu value="#{saidas.saidas.formaPagamentosId}"
 								 converter="simpleIndexConverter">
-									<f:selectItems value="#{entradas.formaPagamentos}"/>
+									<f:selectItems value="#{saidas.formaPagamentos}"/>
 								</h:selectOneMenu>
 							</td>
 						</tr>
 						<tr>
-							<td>Conta:</td>
+							<td>Cedentes:</td>
 							<td>
-								<h:selectOneMenu value="#{entradas.entradas.contasId}"
+								<h:selectOneMenu value="#{saidas.saidas.cedentesId}"
 								 converter="simpleIndexConverter">
-									<f:selectItems value="#{entradas.contas}"/>
+									<f:selectItems value="#{saidas.cedentes}"/>
 								</h:selectOneMenu>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
-								<h:commandButton value="Cadastrar" action="#{entradas.add}" render="resultado" />
+								<h:commandButton value="Cadastrar" action="#{saidas.add}" render="resultado" />
 							</td>
 						</tr>
 					</table>

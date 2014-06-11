@@ -13,6 +13,22 @@
 <f:view>
 	<h:body>
 		<h:form>
+			<rich:toolbar height="26px">
+            <rich:dropDownMenu mode="ajax">
+                <f:facet name="label">
+                    <h:panelGroup>
+                        <h:outputText value="Cadastros" />
+                    </h:panelGroup>
+                </f:facet>
+                <rich:menuItem label="New" action="#{dropDownMenuBean.doNew}">
+                </rich:menuItem>
+                <rich:menuItem label="Open" action="#{dropDownMenuBean.doOpen}" />
+                <rich:menuItem label="Close" action="#{dropDownMenuBean.doClose}" />
+                <rich:menuSeparator id="menuSeparator11" />
+                <rich:menuItem label="Exit" action="#{dropDownMenuBean.doExit}" />
+            </rich:dropDownMenu>
+        </rich:toolbar>
+         <br />
 			<a4j:region>
 				<rich:panel header="Listagem de Franquias" id="painel">
 						<h:link value="Adicionar" outcome="add" />

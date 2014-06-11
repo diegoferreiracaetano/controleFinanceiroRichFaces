@@ -7,7 +7,6 @@
 package br.com.fiap.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,11 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -30,15 +25,6 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "saidas", catalog = "financeiro1", schema = "")
-@NamedQueries({
-    @NamedQuery(name = "Saidas.findAll", query = "SELECT s FROM Saidas s"),
-    @NamedQuery(name = "Saidas.findById", query = "SELECT s FROM Saidas s WHERE s.id = :id"),
-    @NamedQuery(name = "Saidas.findByDataEmissao", query = "SELECT s FROM Saidas s WHERE s.dataEmissao = :dataEmissao"),
-    @NamedQuery(name = "Saidas.findByDataVencimento", query = "SELECT s FROM Saidas s WHERE s.dataVencimento = :dataVencimento"),
-    @NamedQuery(name = "Saidas.findByDataPagamento", query = "SELECT s FROM Saidas s WHERE s.dataPagamento = :dataPagamento"),
-    @NamedQuery(name = "Saidas.findByRecido", query = "SELECT s FROM Saidas s WHERE s.recido = :recido"),
-    @NamedQuery(name = "Saidas.findByDescricao", query = "SELECT s FROM Saidas s WHERE s.descricao = :descricao"),
-    @NamedQuery(name = "Saidas.findByValor", query = "SELECT s FROM Saidas s WHERE s.valor = :valor")})
 public class Saidas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,31 +32,22 @@ public class Saidas implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "data_emissao")
-    @Temporal(TemporalType.DATE)
-    private Date dataEmissao;
-    @Column(name = "data_vencimento")
-    @Temporal(TemporalType.DATE)
-    private Date dataVencimento;
-    @Column(name = "data_pagamento")
-    @Temporal(TemporalType.DATE)
-    private Date dataPagamento;
-    @Column(name = "recido")
-    private String recido;
+    @Column(name = "recibo")
+    private String recibo;
     @Column(name = "descricao")
     private String descricao;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "valor")
-    private Double valor;
+    @Column(name = "valor_total")
+    private Double valorTotal;
     @ManyToMany(mappedBy = "saidasList")
     private List<Pagamentos> pagamentosList;
     @JoinColumn(name = "forma_pagamentos_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private FormaPagamentos formaPagamentosId;
-    @JoinColumn(name = "despesas_id", referencedColumnName = "id")
+    @JoinColumn(name = "despesas_id",nullable = true, referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Despesas despesasId;
-    @JoinColumn(name = "cedentes_id", referencedColumnName = "id")
+    @JoinColumn(name = "cedentes_id",nullable = true, referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cedentes cedentesId;
 
@@ -89,52 +66,12 @@ public class Saidas implements Serializable {
         this.id = id;
     }
 
-    public Date getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(Date dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public Date getDataVencimento() {
-        return dataVencimento;
-    }
-
-    public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
-
-    public Date getDataPagamento() {
-        return dataPagamento;
-    }
-
-    public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
-    }
-
-    public String getRecido() {
-        return recido;
-    }
-
-    public void setRecido(String recido) {
-        this.recido = recido;
-    }
-
     public String getDescricao() {
         return descricao;
     }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
     }
 
     public List<Pagamentos> getPagamentosList() {
@@ -193,5 +130,23 @@ public class Saidas implements Serializable {
     public String toString() {
         return "br.com.fiap.entity.Saidas[ id=" + id + " ]";
     }
+    
+    
+
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	public String getRecibo() {
+		return recibo;
+	}
+
+	public void setRecibo(String recibo) {
+		this.recibo = recibo;
+	}
     
 }

@@ -60,7 +60,21 @@ public class Pagamentos implements Serializable {
     public Pagamentos() {
     }
 
-    public Pagamentos(Integer id) {
+    
+    
+    public Pagamentos(String descricao, Date dataEmissao, Date dataVencimento,
+			Date dataPagamento, Double valor) {
+		super();
+		this.descricao = descricao;
+		this.dataEmissao = dataEmissao;
+		this.dataVencimento = dataVencimento;
+		this.dataPagamento = dataPagamento;
+		this.valor = valor;
+	}
+
+
+
+	public Pagamentos(Integer id) {
         this.id = id;
     }
 

@@ -18,8 +18,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -28,11 +26,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "entradas", catalog = "financeiro1", schema = "")
-@NamedQueries({
-    @NamedQuery(name = "Entradas.findAll", query = "SELECT e FROM Entradas e"),
-    @NamedQuery(name = "Entradas.findById", query = "SELECT e FROM Entradas e WHERE e.id = :id"),
-    @NamedQuery(name = "Entradas.findByDescricao", query = "SELECT e FROM Entradas e WHERE e.descricao = :descricao"),
-    @NamedQuery(name = "Entradas.findByValorTotal", query = "SELECT e FROM Entradas e WHERE e.valorTotal = :valorTotal")})
 public class Entradas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

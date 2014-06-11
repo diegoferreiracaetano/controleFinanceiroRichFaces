@@ -18,49 +18,42 @@
 					<table id="tab">
 						<tr>
 							<td>Descrição:</td>
-							<td>
-								<h:inputHidden value="#{saidas.saidas.id}" />
-								<h:inputText value="#{saidas.saidas.descricao}" />
-							</td>
+							<td><h:inputText value="#{entradas.entradas.descricao}" /></td>
 						</tr>
 						<tr>
 							<td>Valor Total:</td>
-							<td><rich:inputNumberSpinner value="#{saidas.saidas.valorTotal}" /></td>
+							<td><rich:inputNumberSpinner value="#{entradas.entradas.valorTotal}" /></td>
 						</tr>
 						<tr>
-							<td>Recido:</td>
-							<td><h:inputText value="#{saidas.saidas.recibo}" /></td>
-						</tr>
-						<tr>
-							<td>Despesas:</td>
+							<td>Franquia:</td>
 							<td>
-								<h:selectOneMenu value="#{saidas.saidas.despesasId}"
+								<h:selectOneMenu value="#{entradas.entradas.franquiasId}"
 								 converter="simpleIndexConverter">
-									<f:selectItems value="#{saidas.despesas}"/>
+									<f:selectItems value="#{entradas.franquias}"/>
 								</h:selectOneMenu>
 							</td>
 						</tr>
 						<tr>
 							<td>Formas de Pagamento:</td>
 							<td>
-								<h:selectOneMenu value="#{saidas.saidas.formaPagamentosId}"
+								<h:selectOneMenu value="#{entradas.entradas.formaPagamentosId}"
 								 converter="simpleIndexConverter">
-									<f:selectItems value="#{saidas.formaPagamentos}"/>
+									<f:selectItems value="#{entradas.formaPagamentos}"/>
 								</h:selectOneMenu>
 							</td>
 						</tr>
 						<tr>
-							<td>Cedentes:</td>
+							<td>Conta:</td>
 							<td>
-								<h:selectOneMenu value="#{saidas.saidas.cedentesId}"
+								<h:selectOneMenu value="#{entradas.entradas.contasId}"
 								 converter="simpleIndexConverter">
-									<f:selectItems value="#{saidas.cedentes}"/>
+									<f:selectItems value="#{entradas.contas}"/>
 								</h:selectOneMenu>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
-								<h:commandButton value="Cadastrar" action="#{saidas.edit}" render="resultado" />
+								<h:commandButton value="Cadastrar" action="#{entradas.add}" render="resultado" />
 							</td>
 						</tr>
 					</table>

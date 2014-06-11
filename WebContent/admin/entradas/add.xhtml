@@ -22,7 +22,10 @@
 						</tr>
 						<tr>
 							<td>Valor Total:</td>
-							<td><rich:inputNumberSpinner value="#{entradas.entradas.valorTotal}" /></td>
+							<td>
+								<h:inputText value="#{entradas.entradas.valorTotal}">
+								</h:inputText>
+							</td>
 						</tr>
 						<tr>
 							<td>Franquia:</td>
@@ -52,8 +55,34 @@
 							</td>
 						</tr>
 						<tr>
+							<td colspan="50">
+										
+								<rich:dataTable id="pagamentos" var="lista" value="#{entradas.pagamentosList}">
+								<rich:column>
+									<f:facet name="header">Descrição</f:facet>
+									<h:inputText value="#{lista.descricao}" target="#{entradas.pagamentosList.descricao}"/>
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">Data Emissão</f:facet>
+									<rich:calendar datePattern="dd/MM/yyyy" value="#{lista.dataEmissao}"  target="#{entradas.pagamentosList.dataEmissao}"/>
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">Data Emissão</f:facet>
+									<rich:calendar datePattern="dd/MM/yyyy" value="#{lista.dataVencimento}" target="#{entradas.pagamentosList.dataVencimento}"/>
+									<h:inputHidden value="#{lista.dataPagamento}" target="#{entradas.pagamentosList.dataPagamento}" />
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">Valor</f:facet>
+									<h:inputText value="#{lista.valor}" target="#{entradas.pagamentosList.valor}"/>
+									<h:inputText value="#{lista}" target="#{entradas.pagamentosList}"/>
+								</rich:column>
+								</rich:dataTable>						
+							</td>
+						</tr>
+						<tr>
 							<td colspan="2">
-								<h:commandButton value="Cadastrar" action="#{entradas.add}" render="resultado" />
+								 <h:commandButton value="Gerar pagamento" action="#{entradas.gerarPagamento}"/>
+								<h:commandButton value="Cadastrar" action="#{entradas.add}" id="resultado" />
 							</td>
 						</tr>
 					</table>

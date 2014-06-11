@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Cadastro de Pagamentos</title>
+</h:head>
+<f:view>
+	<h:body>
+		<h:form>
+			<a4j:region>
+				<rich:panel header="Cadastro de Pagamentos" id="painel">
+					<br />
+					<table id="tab">
+						<tr>
+							<td>Descrição:</td>
+							<td>
+								<h:inputHidden value="#{pagamentos.pagamentos.id}" />
+								<h:inputText value="#{pagamentos.pagamentos.descricao}" />
+							</td>
+						</tr>
+						<tr>
+							<td>Valor:</td>
+							<td><h:inputText value="#{pagamentos.pagamentos.valor}" /></td>
+						</tr>
+						<tr>
+							<td>Data Emissão:</td>
+							<td><rich:calendar datePattern="dd/MM/yyyy" value="#{pagamentos.pagamentos.dataEmissao}" /></td>
+						</tr>
+						<tr>
+							<td>Data Vencimento:</td>
+							<td><rich:calendar datePattern="dd/MM/yyyy" value="#{pagamentos.pagamentos.dataVencimento}" /></td>
+						</tr>
+						<tr>
+							<td>Data Pagamento:</td>
+							<td>
+								<rich:calendar datePattern="dd/MM/yyyy" value="#{pagamentos.pagamentos.dataPagamento}" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<h:commandButton value="Cadastrar" action="#{pagamentos.edit}" render="resultado" />
+							</td>
+						</tr>
+					</table>
+				</rich:panel>
+			</a4j:region>
+		</h:form>
+	</h:body>
+</f:view>
+</html>
